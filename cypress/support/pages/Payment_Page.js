@@ -9,7 +9,7 @@ export const PaymentPage={
         },
 
         checkOrderCompleted(){
-            cy.get('a[class="button-exclusive btn btn-default"]').should('be.visible')
-               }
+           return cy.get('a[class="button-exclusive btn btn-default"]')
+            }
     
   }

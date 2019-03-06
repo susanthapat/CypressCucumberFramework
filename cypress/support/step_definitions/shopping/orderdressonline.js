@@ -1,7 +1,5 @@
 //import SummeryPage from "../../page/SummeryPage";
-import { Given } from "cypress-cucumber-preprocessor/steps";
-import { When } from "cypress-cucumber-preprocessor/steps";
-import { Then } from "cypress-cucumber-preprocessor/steps";
+import { Given,When,Then } from "cypress-cucumber-preprocessor/steps";
 import {HomePage} from "../../pages/Home_Page";
 import {SummeryPage} from "../../pages/Summery_Page";
 import {ItemDetailsPage} from "../../pages/Item_Details_Page";
@@ -12,37 +10,47 @@ import {PaymentPage} from "../../pages/Payment_Page";
 
 
 const url = 'http://automationpractice.com/index.php?'
-Given('I open automationpractice index page', () => {
+Given('I\'m on the automationpractice index page', () => {
   cy.visit(url);
+})
+
+When(`I select the product`, () => {
   HomePage.selectProduct();
+})
+
+When(`I add item to the cart`, () => {
   ItemDetailsPage.addItemToCart();
+  cy.scrollTo('bottom')
   SummeryPage.clickOnProceedtocheckout();
-  SignInPage.signIn();
-  AddressPage.addComment()
+})
+
+When(`I sign in using username {string} and password {string}`, (username,password) => {
+  SignInPage.signIn({uname:username,pwd:password});
+})
+
+
+When(`I add comments {string}`, (comment) => {
+  AddressPage.addComment({commntstoadd:comment})
   AddressPage.proceedToCheckOut()
+})
+
+
+When(`I marked agreement check box`, () => {
   ShippingPage.markTermsofservice()
   ShippingPage.proceedToPayments()
+})
+
+
+When(`I selec payment method`, () => {
   PaymentPage.selectPaymentMethod()
+})
+
+When(`I confirm order`, () => {
   PaymentPage.confirmOrder()
-  PaymentPage.checkOrderCompleted();
-
 })
 
 
-When(`I type {string} in search box`, (keyWord) => {
-  cy.get('input[name=q]').type((keyWord) )
-})
-
-When(`I click on search button`, () => {
-  cy.get('#sbtc > button ').focus().click({force: true} )
-})
-
-
-Then(`Result list will be apeared`, () => {
- 
-  cy
-  .get('img')
-  .each(($el, index, $list) => {
-    cy.wrap(el).invoke('alt').should('contain','Image result for Chocolate cake')
-  })
+Then(`I should be in order completed page`, () => {
+  //To Do : This need to be replaced with proper validation than this.
+ PaymentPage.checkOrderCompleted().should('be.visible')
 })

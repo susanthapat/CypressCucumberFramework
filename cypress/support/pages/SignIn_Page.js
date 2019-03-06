@@ -1,9 +1,8 @@
 export const SignInPage= {
   
-    signIn() {
-      cy.get('input[id="email"]').type('susantha@gmail.com')
-      cy.get('input[id="passwd"]').type('1qaz2wsx@')
-     //cy.get('input[id="email_create"]').type('susantha@gmail.com')
-       cy.get('#SubmitLogin > span').click() 
+    signIn(vals={}) {
+      cy.get('input[id="email"]').wait(5000).type(vals.uname)
+      cy.get('input[id="passwd"]').type(vals.pwd)
+      cy.get('#SubmitLogin > span').click() 
       }
     }

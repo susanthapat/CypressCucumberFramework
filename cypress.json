@@ -1,3 +1,11 @@
-{
-    "ignoreTestFiles": "*.js"
+{   
+    "ignoreTestFiles": "*.js",
+    "reporter": "mochawesome" ,  
+    "reporterOptions": {
+        "reportDir": "cypress/results/",
+        "reportFilename": "Test_Report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      }  
 }
