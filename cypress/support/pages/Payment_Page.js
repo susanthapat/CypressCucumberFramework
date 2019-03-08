@@ -5,7 +5,7 @@ export const PaymentPage={
        // cy.get('.cheque')
     },
     confirmOrder(){ 
-        cy.get('#cart_navigation > .button > span').click().wait(5000)
+        cy.get('#cart_navigation > .button > span').click()
         },
 
         checkOrderCompleted(){

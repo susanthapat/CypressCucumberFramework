@@ -9,7 +9,7 @@ import {ShippingPage} from "../../pages/Shipping_Page";
 import {PaymentPage} from "../../pages/Payment_Page";
 
 
-const url = 'http://automationpractice.com/index.php?'
+const url = '/index.php?'
 Given('I\'m on the automationpractice index page', () => {
   cy.visit(url);
 })

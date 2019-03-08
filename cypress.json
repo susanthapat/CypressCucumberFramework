@@ -1,5 +1,10 @@
 {   
     "ignoreTestFiles": "*.js",
+    "baseUrl":"http://automationpractice.com",
+    "video":true,
+    "waitForAnimations":true,
+    "defaultCommandTimeout":6000,
+    "screenShot":false,
     "reporter": "mochawesome" ,  
     "reporterOptions": {
         "reportDir": "cypress/results/",
@@ -8,4 +13,5 @@
         "html": true,
         "json": true
       }  
+    
 }

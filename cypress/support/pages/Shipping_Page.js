@@ -1,11 +1,13 @@
 export const ShippingPage={
 
     markTermsofservice(){ 
-        cy.get('#cgv').click().wait(5000)
+        cy.get('#cgv').click()
+        cy.screenshot('test-screenshot')
     },
     
     proceedToPayments(){ 
-        cy.get('.cart_navigation > .button > span').click().wait(5000)
+        
+        cy.get('.cart_navigation > .button > span').click()
     }
     
    
